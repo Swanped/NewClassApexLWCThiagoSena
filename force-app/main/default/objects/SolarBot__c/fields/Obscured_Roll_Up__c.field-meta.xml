@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Obscured_Roll_Up__c</fullName>
+    <externalId>false</externalId>
+    <label>Obscured Roll-Up</label>
+    <summarizedField>SolarBot_Status__c.Percent_Obscured__c</summarizedField>
+    <summaryForeignKey>SolarBot_Status__c.SolarBot__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

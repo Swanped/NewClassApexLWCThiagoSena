@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Quality_Score__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( LEN(TEXT(MONTH(StartDate)))=0, 0,20) + IF( LEN(TEXT( ContractTerm ))=0, 0,20) + IF( LEN( BillingCity ) = 0, 0,20) + IF( LEN( CustomerSignedId) = 0, 0,20) + IF( ISPICKVAL(  OwnerExpirationNotice ,&quot;&quot;), 0,20)</formula>
+    <label>Data Quality Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

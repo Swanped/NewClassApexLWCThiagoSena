@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Arrecada_o_Mensal__c</fullName>
+    <externalId>false</externalId>
+    <label>Arrecadação Mensal</label>
+    <summarizedField>Unidade__c.Valor_Aluguel__c</summarizedField>
+    <summaryFilterItems>
+        <field>Unidade__c.Alugado__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Unidade__c.Edificio__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>
