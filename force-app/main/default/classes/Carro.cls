@@ -1,6 +1,24 @@
 public with sharing class Carro {
+
+    //Atributos
+    public String modelo {get; set;}
+    public String cor {get; set;}
+    public Boolean ligado {get; set;}
+    public Integer velocidade {get; set;}
+    public Boolean estadoPorta {get; set;}
+    public Boolean gasolina {get; set;}
+
+    public Boolean acelerar(Integer velocidade){
+        this.velocidade = velocidade;
+        if (gasolina == true ) {
+            return velocidade > 0 && velocidade != null  ? true : false;     
+        } else {
+            return velocidade = 0;
+        }
+    }
+
     
-    public Boolean ligarCarro(Boolean ligarCarro){
+    /*public Boolean ligarCarro(Boolean ligarCarro){
 
         Boolean carroLigado = ligarCarro ? true : false;
 
@@ -33,13 +51,8 @@ public with sharing class Carro {
             System.debug('Seta desligada');
         }
         return ligarSeta;
-    }
+    }*/
 
-    public Integer acelerarCarro (Integer acelerarCarro){
-
-        
-
-    }
-
+    
 
 }
