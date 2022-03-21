@@ -1,58 +1,48 @@
 public with sharing class Carro {
 
-    //Atributos
+    //atributos do carro
     public String modelo {get; set;}
     public String cor {get; set;}
     public Boolean ligado {get; set;}
     public Integer velocidade {get; set;}
-    public Boolean estadoPorta {get; set;}
+    public Boolean estadoPorta {get; set;} //false é porta fechada
     public Boolean gasolina {get; set;}
 
+    //DESAFIO - No Carro criar um metodo chamado Acelerar, passar nesse metodo o numero da velocidade. retornar a mesma velocidade.
+    //No motorista vocês devem mandar para o carro o valor da velocidade, porém só pode acelerar se o carro estiver ligado.
     public Boolean acelerar(Integer velocidade){
-        this.velocidade = velocidade;
-        if (gasolina == true ) {
-            return velocidade > 0 && velocidade != null  ? true : false;     
-        } else {
-            return velocidade = 0;
-        }
-    }
+        return velocidade > 0 && velocidade != null && this.ligado == true && this.gasolina == true? true : false;
+    } // No caso do && não tem a necessidade de colocar true nos atributos.
 
     
+  
     /*public Boolean ligarCarro(Boolean ligarCarro){
-
         Boolean carroLigado = ligarCarro ? true : false;
-
-        if (ligarCarro == true) {
-            System.debug('Carro ligado');
-        } else {
-            System.debug('Carro desligado');
+        if(ligarCarro == true){
+            system.debug('ligou o carro');
+        }else{
+            system.debug('desligou o carro');
         }
         return carroLigado;
     }
-
-    public Boolean ligarFarois(Boolean ligarFarois){
-
-        Boolean ligarFarol = ligarFarois ? true : false;
-
-        if (ligarFarois == true) {
-            System.debug('Farol ligado');
-        } else {
-            System.debug('Farol desligado');
-        }
-        return ligarFarol;
-    }
-    public Boolean ligarSetas(Boolean ligarSetas){
-
-        Boolean ligarSeta = ligarSetas ? true : false;
-
-        if (ligarSetas== true) {
-            System.debug('Seta ligada');
-        } else {
-            System.debug('Seta desligada');
-        }
-        return ligarSeta;
-    }*/
-
     
+    public Boolean ligarFarois(Boolean ligarFarois){
+        Boolean ligouFarol = ligarFarois ? true : false;
+        if(ligarFarois){
+            system.debug('Ligou os farois');
+        }else{
+            system.debug('Desligou os farois');
+        }
+        return ligouFarol;
+    }
+    public Boolean ligarSeta(Boolean ligarSeta){
+        Boolean ligouSeta = ligarSeta ? true : false;
+        if(ligarSeta){
+            system.debug('Ligou os Seta');
+        }else{
+            system.debug('Desligou os Seta');
+        }
+        return ligouSeta;
+    }*/    
 
 }
