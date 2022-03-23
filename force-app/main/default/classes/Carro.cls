@@ -11,7 +11,13 @@ public with sharing class Carro {
     //DESAFIO - No Carro criar um metodo chamado Acelerar, passar nesse metodo o numero da velocidade. retornar a mesma velocidade.
     //No motorista vocês devem mandar para o carro o valor da velocidade, porém só pode acelerar se o carro estiver ligado.
     public Boolean acelerar(Integer velocidade){
-        return velocidade > 0 && velocidade != null && this.ligado == true && this.gasolina == true? true : false;
+        Boolean continua = true;
+        if (this.ligado == null && this.gasolina == null) {
+            continua = false;
+        } else {
+            continua = this.ligado == true && this.gasolina == true;
+        }
+        return velocidade > 0 && velocidade != null && continua ? true : false;
     } // No caso do && não tem a necessidade de colocar true nos atributos.
 
     

@@ -12,7 +12,7 @@ trigger AccountTrigger on Account (after insert) {
             Task novaTarefa  = new Task();
             novaTarefa.WhatId = aTemp.Id;
            // novaTarefa.WhoId = aTemp.Id;
-            novaTarefa.Subject  = 'Verficar dados cadastrais';
+            novaTarefa.Subject  = 'Verificar dados cadastrais';
             novaTarefa.OwnerId = aTemp.OwnerId; 
             novaTarefa.Status = 'In Progress';
             novaTarefa.Priority = 'High';
