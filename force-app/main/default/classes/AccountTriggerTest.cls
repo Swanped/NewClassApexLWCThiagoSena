@@ -16,7 +16,7 @@ public class AccountTriggerTest {
         System.assertEquals(listTask.size(),1);
     }
 
-    //teste 2 - criar conta sem tarefa
+    //teste 2 - criar conta sem tarefas
     @isTest
     static void AccountTriggerTest2(){
         Account accountObj = new Account();
