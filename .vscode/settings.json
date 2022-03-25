@@ -3,5 +3,10 @@
     "**/node_modules": true,
     "**/bower_components": true,
     "**/.sfdx": true
-  }
+  },
+  "cSpell.words": [
+    "Lista",
+    "oportunidade",
+    "Oportunidades"
+  ]
 }
