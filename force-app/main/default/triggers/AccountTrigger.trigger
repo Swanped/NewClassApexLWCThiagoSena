@@ -1,42 +1,25 @@
-
-//toda vez que criar uma nova conta com o campo Propriedade = 'Private', voce deve criar uma tarefa para o propritario da conta, dizendo para verificar os dados cadastrais da mesma.
+//DESAFIO : toda vez que criar uma nova conta, com o campo Propriedade = Private, você deve criar uma tarefa para o proprietário da conta, dizendo para verificar os dados cadastrais da mesma.
 
 trigger AccountTrigger on Account (after insert) {
 
-    if (Trigger.isinsert && trigger.isafter) {
-        
-        List<Task> listTarefa = new List<Task>();
+    if(Trigger.isInsert && Trigger.isAfter){
+
+        List<Task> taskList = new List<Task>();
+
         for(Account aTemp : Trigger.New){
-            if (aTemp.Ownership == 'Private') {
-               
-            Task novaTarefa  = new Task();
-            novaTarefa.WhatId = aTemp.Id;
-           // novaTarefa.WhoId = aTemp.Id;
-            novaTarefa.Subject  = 'Verificar dados cadastrais';
-            novaTarefa.OwnerId = aTemp.OwnerId; 
-            novaTarefa.Status = 'In Progress';
-            novaTarefa.Priority = 'High';
-            listTarefa.add(novaTarefa); 
-    
-            } if (aTemp.Ownership == 'Public') {
-                Task novaTarefa  = new Task();
-                novaTarefa.WhatId = aTemp.Id;
-                //novaTarefa.WhoId = aTemp.Id;
-                novaTarefa.Subject  = 'Verficar dados publicos inseridos';
-                novaTarefa.OwnerId = aTemp.OwnerId; 
-                novaTarefa.Status = 'In Progress';
-                novaTarefa.Priority = 'Low';
-                listTarefa.add(novaTarefa); 
-            } 
-            
+            if(aTemp.OwnerShip == 'Private'){
+                Task taskObj = new Task();
+                taskObj.Subject = 'Verificar dados das contas';
+                taskObj.ActivityDate = System.Today();
+                taskObj.WhatId = aTemp.Id;
+                taskObj.OwnerId = aTemp.OwnerId;
+                //insert taskObj;
+                taskList.add(taskObj);
+            }
         }
-    
-        if(listTarefa.size() > 0){
-            insert listTarefa;
+
+        if(taskList.size() > 0){
+            insert taskList;
         }
-    
-    
     }
 }
-
-

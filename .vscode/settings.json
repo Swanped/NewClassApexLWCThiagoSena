@@ -3,17 +3,5 @@
     "**/node_modules": true,
     "**/bower_components": true,
     "**/.sfdx": true
-  },
-  "cSpell.words": [
-    "Acionou",
-    "Botão",
-    "Clicou",
-    "Conta",
-    "lighttning",
-    "Lista",
-    "Mixim",
-    "oportunidade",
-    "Oportunidades",
-    "Venda"
-  ]
+  }
 }

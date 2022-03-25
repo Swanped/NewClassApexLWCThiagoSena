@@ -1,6 +1,9 @@
 @isTest
-public with sharing class MotoristaTest {
-    public MotoristaTest() {
+public class MotoristaTest {
 
+    @isTest
+    static void testcarrodoMotorista(){
+        Motorista.carrodoMotorista();
     }
+    
 }

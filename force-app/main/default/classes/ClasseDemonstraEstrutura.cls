@@ -1,275 +1,314 @@
-public with sharing class ClasseDemonstraEstrutura {
+//nome da classe
+public with sharing class ClasseDemonstraEstrutura {//inicio da classe
 
-    public static boolean nomeDoMetodo(){
+    //SALVAR SEMPRE = CTRL + S
+    
+    //metodo da classe, uma classe pode ter varios metodos
+    public static boolean nomeDoMetodo(){//inicio do método
 
-        // TIPO VARIAVEL | NOME VARIAVEL | VALOR VARIAVEL
+        //TIPO VARIAVEL | NOME VARIAVEL | VALOR VARIAVEL
         Boolean bTrue = true;
         Boolean bFalse = false;
-        Boolean bExemplo; // retornará True
-        String exemploString = 'Teste String';
-        Integer exemploInteiro = 3;
+        Boolean bExemple;
+        String exemploString = 'texto 123456';
+        Integer exemploInteiro = 1;
         Decimal exemploDecimal = 1.02;
-        Double exemploDouble = 1.2564878989;
+        Double exemploDouble = 1.0255464454546;
 
         //coleções
         List<String> exemploLista = new List<String>();
-        exemploLista.add('Primeiro');//[0] - Primeiro
-        exemploLista.add('Segundo'); //[1] - Segundo
-        exemploLista.add('Terceiro'); //[2] - Terceiro
-        exemploLista.add('Quarto'); //[3] - Quarto
+        //[0] - Edgar
+        //[1] - João Paulo
+        //[2] - Arnaldo
+        //[3] - Guilherme
+        exemploLista.add('Edgar');
+        exemploLista.add('João Paulo');
+        exemploLista.add('Arnaldo');
+        exemploLista.add('Guilherme');
+        exemploLista.add('Guilherme');
+        exemploLista.add('Guilherme');
+        exemploLista.add('Guilherme');
+        system.debug('exemploLista = '+exemploLista);
+        system.debug('exemploLista posição 2 = '+exemploLista.get(2));
+        system.debug('exemploLista tamanho = '+exemploLista.size());
 
-        System.debug('Lista= ' + exemploLista);
-        System.debug('Exemplo teste = ' + exemploLista.get(1));
-        System.debug('Lista tamanho = ' + exemploLista.size());
+        ///Adição sem usar o add
+        List<String> exemploLista2 = new List<String>{'Edgar', 'João Paulo', 'Arnaldo'};
 
-        List<Integer> exemploIntegerList = new List<Integer>();
-        exemploIntegerList.add(6);
-        exemploIntegerList.add(null);
-        exemploIntegerList.add(5);
-        System.debug('Lista Integer= ' + exemploIntegerList.get(0) + ' ' + exemploIntegerList.size());
-        System.debug('Lista completa= ' + exemploIntegerList);
-        
-        //coleção SET
+        List<Integer> exemploListaInteger = new List<Integer>();
+        exemploListaInteger.add(null);
+        exemploListaInteger.add(1);
+        exemploListaInteger.add(2);
+        exemploListaInteger.add(3);
+        system.debug('exemploListaInteger = '+exemploListaInteger);
+
+        //coleção set
         Set<String> exemploSet = new Set<String>();
-        exemploSet.add('Primeiro');
-        exemploSet.add('Segundo');
-        exemploSet.add('Terceiro');
-        exemploSet.add('Quarto');
-        exemploSet.add('Quarto');
-        
-        System.debug('Lista SET= ' + exemploSet);
-        System.debug('Lista SET tamanho= ' + exemploSet.size());
-        
-        List<Opportunity> opportunityList = new List<Opportunity>([SELECT Id, Name FROM Opportunity]);
-        System.debug('Selecione oportunidades = ' + opportunityList);
-        System.debug('Selecione nome oportunidade = ' + opportunityList.get(1).Name);
-        
+        exemploSet.add('Edgar');
+        exemploSet.add('João Paulo');
+        exemploSet.add('Arnaldo');
+        exemploSet.add('Guilherme');
+        exemploSet.add('Guilherme');
+        exemploSet.add('Guilherme');
+        exemploSet.add('Guilherme');
+        system.debug('exemploSet = '+exemploSet);
+        system.debug('exemploSet tamalho = '+exemploSet.size());
+
+        List<Opportunity> opportunityList =  new List<Opportunity>([SELECT Id, Name FROM Opportunity]);
+        system.debug('opportunityList = '+opportunityList);
+        system.debug('opportunityList posição 2 = '+opportunityList.get(2));
+        system.debug('opportunityList nome posição 2 = '+opportunityList.get(2).Name);
+        /*
+        (
+              Opportunity:{Id=0068c00000pMREmAAO, Name=Edge Emergency Generator}
+            , Opportunity:{Id=0068c00000pMREtAAO, Name=Edge Installation}
+            , Opportunity:{Id=0068c00000pMREuAAO, Name=Edge SLA}
+            , Opportunity:{Id=0068c00000pMRF8AAO, Name=Edge Emergency Generator}
+            , Opportunity:{Id=0068c00000pMRF1AAO, Name=Burlington Textiles Weaving Plant Generator}
+            , Opportunity:{Id=0068c00000pMREoAAO, Name=Pyramid Emergency Generators}
+            , Opportunity:{Id=0068c00000pMREeAAO, Name=Dickenson Mobile Generators}
+        )
+        */
+
+        Account contaObjeto = new Account();
+        contaObjeto.Name = 'Test';
+        system.debug('contaObjeto '+contaObjeto);
+
         return bFalse;
-    }
-        
-        //METODO SEM RETORNO
+    }//fim do método
+
+    //classe sem retorno
     public static void metodoSemRetorno(){
-
+        
     }
 
-        //Estrutura SOQL
-        //SELECT
-        //CAMPOS
-        //FROM
-        //NOME DO OBJETO
-        //WHERE
-        //CONDIÇÕES DE BUSCA
+    //Estrutura do SOQL
+    //SELECT
+    //campos
+    //FROM
+    //nome do objeto
+    //WHERE
+    //condição de busca
     private static List<Account> getAccounts(){
-        List<Account> accountList = new List<Account>([SELECT Id, Name FROM Account WHERE Id != '']);
+        List<Account> accountList =  new List<Account>([SELECT Id, Name FROM Account WHERE Id != '']);
         return accountList;
-
     }
 
     public static void getAccountPrivate(){
-        System.debug(ClasseDemonstraEstrutura.getAccounts());
+        system.debug(ClasseDemonstraEstrutura.getAccounts());
     }
 
-    //Desafio - Montar um método que busque e retorne uma lista com todos as oportunidades com a fase igual 'Closed Won'
+    //DESAFIO - Montar um método que busque e retorne uma lista com todas as oportunidade com a faze igual  'Closed Won'
+    public static List<Opportunity> getOpportunitiesClosedWon(){
+        List<Opportunity> oppList = new List<Opportunity>();
 
-    public static List<Opportunity> oportunidadeListaClosedWon(){
-        List<Opportunity> getOpportunity = new List<Opportunity>([SELECT Name FROM Opportunity WHERE StageName ='Closed Won']);
-        
-        System.debug('Tamanho lista= ' + getOpportunity.size());
+        oppList = [SELECT Id, Name FROM Opportunity WHERE StageName = 'Closed Won'];
 
-        return getOpportunity;
+        system.debug(oppList);
+        system.debug('tamanho '+oppList.size());
 
+        return oppList;
+    }
+
+    public static List<Opportunity> getOpportunitiesClosedWon2(){
+        return [SELECT Id, Name FROM Opportunity WHERE StageName = 'Closed Won'];
     } 
-    public static List<Opportunity> oportunidadeListaClosedWon2(){
-        List<Opportunity> getOpportunity = new List<Opportunity>();
-        
-        System.debug('Tamanho lista= ' + getOpportunity.size()); 
-
-        return [SELECT Name FROM Opportunity WHERE StageName ='Closed Won'];
-        
-
+    
+    public static List<Opportunity> getOpportunitiesClosedWon3(){
+        List<Opportunity> oppList = new List<Opportunity>([SELECT Id, Name FROM Opportunity WHERE StageName != 'Closed Won' AND StageName != 'Closed Lost']);
+        system.debug(oppList);
+        system.debug('tamanho '+oppList.size());
+        return oppList;
     } 
-
-    //EXEMPLO PARÂMETROS
-
-    public static Integer exemploParametros(Integer intPar, Integer diV){
-
-        Integer testDiv = intPar / diV;
-
-        System.debug('Valor divisão = ' + testDiv);
-
-        return testDiv;
-
-    }
-
-    public static void exemploParametros2(Integer intPar, Integer diV){
-
-        Integer intTest = intPar + 10;
-        Integer testDiv = intTest / diV;
-
-        System.debug('Valor do inteiro = ' + intTest );
-        
-        System.debug('Valor divisão = ' + testDiv);  
-
-    }
-
-    public static String digaOla(String sName){
-
-        String inserirName = sName;
-
-        System.debug('Olá ' + inserirName);
-
-        return inserirName;
-
-    }
-
-    public static void digaOla2(String sName){
-        System.debug('Qual seu nome?');
-        System.debug('Olá, meu nome é ' + sName);  
-
-    }
-
-    //EXECUÇÃO DML - insert, update, upsert, delete
-    public static Account dmlAccount(String name, String site){
-        Account novaConta = new Account();
-        novaConta.Name = name;
-        novaConta.site = site;
-        insert novaConta;
-        return novaConta;
-    }
     
-    public static Account dmlAccountUpdate(String name, String site, String idAccount){
-    
-        List<Account> accountList = new List<Account>([SELECT Id, Name FROM Account WHERE Id = :idAccount]);
-        Account novaConta = accountList.get(0);
-        novaConta.Name = name;
-        novaConta.site = site;
-        update novaConta;
-        return novaConta;
+    //Exemplo parâmetros
+    public static Integer exemploParametros(Integer pInt, Integer pDiv){
+        Integer intTest = (10 + pInt)/pDiv;
+        system.debug('o valor de intTest é '+intTest);
+        return intTest;
     }
-        
-    public static void dmlAccountDelete(String idAccount){
-        List<Account> accountList = [SELECT Id, Name FROM Account WHERE Id = :idAccount];
+
+    //DESAFIO - criar um método que recebe um nome de uma pessoa, e imprima com o system debug 'Olá NOME'
+    public static void helloName(String name, String sobrenome){
+        system.debug('Olá '+name+' '+sobrenome);
+    }
+
+    public static String helloName2(String name, String sobrenome){
+        return 'Olá '+name+' '+sobrenome;
+    } 
+    
+    public static void callMethods(){
+        //exemplo chamando o void
+        ClasseDemonstraEstrutura.helloName('Tiago','Welter');
+
+        //exemplo chamando um  metodo sem void e com retorno
+        system.debug('O retorno do metodo helloName2 é : '+ClasseDemonstraEstrutura.helloName2('Tiago','Welter'));
+    }
+
+    //EXECUÇÃO DML - insert - update - delete - upsert
+    public static Account dmlAccountInsert(String name){
+        Account accountObj = new Account();
+        accountObj.Name = name;
+        insert accountObj;
+        return accountObj;
+    }
+
+    public static Account dmlAccountUpdate(String name, String idDaConta){
+        List<Account> accountList = new List<Account>([SELECT Id, Name FROM Account WHERE Id = :idDaConta]); //primeiro buscamos as informações
+
+        //Account accountUnique = [SELECT Id, Name FROM Account WHERE Id = :idDaConta LIMIT 1]; //Podemos buscar desta forma també,
+
+        Account accountObj = new Account();
+        if(accountList.size() > 0){
+            accountObj = accountList.get(0); //depois pegamos a unica linha que retorna e colocamos no objeto Account
+            accountObj.Name = name;
+            update accountObj;
+            system.debug('Velho '+accountList.get(0).Name);
+            system.debug('Novo '+accountObj.Name);
+        }
+
+        return accountObj;
+    }
+
+    public static void dmlAccountDelete(String idDaConta){
+        List<Account> accountList = [SELECT Id FROM Account WHERE Id = :idDaConta];
         delete accountList;
-    
-    }   
-
-    //Desafio criar Lead
-    public static Id leadCreate(String sobreNome, String empresa){
-
-        Lead novoLead = new Lead();
-        novoLead.LastName = sobreNome;
-        novoLead.Company = empresa;
-        insert novoLead;
-
-        System.debug(novoLead.Id);
-        return novoLead.Id;
     }
-    
-    public static boolean estruturaCondicao(Integer idade){
-        boolean maiorDeIdade;
-        if(idade < 18){
-            System.debug('Menor de Idade');
-            maiorDeIdade = false;
-        } else {
-            System.debug('Maior de Idade');
-            maiorDeIdade = true;
+
+    //DESAFIO - Receber o sobrenome e o nome da empresa e vamos inserir um Lead, o método deve retornar o Id do lead inserid
+    public static Id insertLead(String lastName, String companyName){
+        Lead leadObj = new Lead();
+        leadObj.LastName = lastName;
+        leadObj.Company = companyName;
+
+        insert leadObj;
+
+        return leadObj.Id;
+    }
+
+    //estruturas de condição
+    public static boolean demosntraEstruturaCondicao(Integer idade){
+        //quero returnar true se a pessoa for maior de idade, senão retorna false
+        boolean bMaiorDeIdade;
+        if( idade < 18 ){
+            system.debug('menor de idade');
+            bMaiorDeIdade = false;
+        }else{
+            system.debug('maior de idade');
+            bMaiorDeIdade = true;
         }
-        return maiorDeIdade;
+        return bMaiorDeIdade;
     }
 
-    public static void estruturaCondicao2(Integer idade){
-        if (idade <= 0 || idade == null) {
-            System.debug('Idade inválida');
-        } else {
-                if (idade < 12) {
-                System.debug('Criança');
-                } else if (idade >= 13 && idade < 21) {
-                    System.debug('Adolescente');
-                } else if (idade >= 21 && idade < 65) {
-                    System.debug('Adulto');
-                } else{
-                    System.debug('Idoso');
-                }
+    public static void demosntraEstruturaCondicao2(Integer idade){
+        if(idade < 0 || idade == null){
+            system.debug('idade inválida');
+        }else{
+            if(idade < 13){
+                system.debug('criança');
+            }else if(idade >= 13 && idade <= 21 ){
+                system.debug('adolescente');
+            }else if(idade > 21 && idade < 65){
+                system.debug('adulto');
+            }else{
+                system.debug('idoso');
+            }
         }
     }
 
-    public static Integer somaDeParametros(Integer valor1, Integer valor2){
-        Integer resultado = valor1 + valor2;
-            
-        if(resultado > 5){
-            
-            resultado = resultado + 2;                                       
-        }    
-        system.debug('O resultado dos valores é '+' '+ resultado);     
+    //DESAFIO
+    //Construir um método que receba dois parâmetros do tipo Inteiro e retorne o a soma destes dois parâmetros
+    //Se o parâmetro 1 for maior do 5 deve somar mais dois neste resultado
+    public static Integer somaDoisValoresComIf(Integer p1, Integer p2){
+        Integer resultado = p1 + p2;
+        if(p1 > 5){
+            resultado = resultado + 2;
+        }
+        system.debug('resultado '+ resultado);
         return resultado;
     }
 
-    public static Integer somaDeParametros2(Integer p1, Integer p2){
+    public static Integer somaDoisValoresComIf2(Integer p1, Integer p2){
         return p1 > 5 ? p1 + p2 + 2 : p1 + p2;
     }
 
-    public static Account dmlAccountUpdate2(String name, String site, String idAccount){
-        List<Account> accountList = new List<Account>([SELECT Id, Name FROM Account WHERE Id = :idAccount]);
-        Account novaConta = new Account();
-        if (accountList.size() > 0) {
-            System.debug('Conta Velha: ' + accountList.get(0).Name);
-            novaConta = accountList.get(0);
-            novaConta.Name = name;
-            novaConta.site = site;
-            update novaConta;         
-            System.debug('Conta Atualizada: ' + accountList.get(0).Name);
+    //ESTRUTURA DE REPETIÇÃO
+    public static Decimal getOpportunitiesTotal(){
+        Decimal total = 0;
+        List<Opportunity> opportunityList = new List<Opportunity>([SELECT Amount FROM Opportunity]);
+
+        for(Opportunity vTemp : opportunityList){
+            total = total + vTemp.Amount;
         }
-        return novaConta;
+        system.debug('valor total das oportunidades = '+total);
+        return total;
     }
 
-    public static Decimal getOpportunity(){
-            Decimal ValorTotal = 0;
-        //Forma diferente de SOQL
-        //for (Opportunity valores : [SELECT Amount FROM Opportunity WHERE StageName NOT IN ('Closed Won' ,'Closed Lost') ])
-        for (Opportunity valores : [SELECT Amount FROM Opportunity WHERE StageName !='Closed Won' AND StageName !='Closed Lost' ]) {
+    public static Decimal getOpportunitiesTotal2(){
+        Decimal total = 0;
 
-            ValorTotal = ValorTotal + valores.Amount;
-            
+        for(Opportunity vTemp : [SELECT Amount FROM Opportunity]){
+            total += vTemp.Amount;
         }
-        System.debug('Oportunidades selecionadas: ' + ValorTotal);
-        return ValorTotal;
+        system.debug('valor total das oportunidades = '+total);
+        return total;
     }
 
-    /*public static Account createAccount(String nome){
-        
-        Account novaConta = new Account();
-        for (Integer a = 1; a < 10; a++) {
-            novaConta.Name = nome + a;
-            insert novaConta;
+    //DESAFIOS
+    //1 - Buscar e retornar o valor total das oportunidade que a fases não sejam 'Closed Won' e 'Closed Lost'
+    public static Decimal getOpportunitiesTotalDesafio(){
+        Decimal total = 0;
+        for(Opportunity vTemp : [SELECT Amount FROM Opportunity WHERE StageName != 'Closed Won' AND StageName != 'Closed Lost']){
+            total += vTemp.Amount; //faz a soma e mantem o valor anterior
         }
-        return novaConta;
-    }*/
-
-    public static void createAccount2(){
-        List<Account> listaCreateAccount = new List<Account>();
-        
-        for (Integer i = 0; i < = 10; i++) {
-            System.debug('teste' + i);
-            Account novaConta = new Account();
-            novaConta.Name = 'Conta' + i;
-            listaCreateAccount.add(novaConta);
-        }
-        insert listaCreateAccount;
+        system.debug('total '+total);
+        return total;
     }
 
-    public static void createAccount(Integer numero){
-        List<Account> listaCreateAccount = new List<Account>();
-
-        for (Integer i = 1; i < = numero; i++) {
-            Account novaConta = new Account();
-            novaConta.Name = 'Conta Desafio' + i;
-            listaCreateAccount.add(novaConta);
+    public static Decimal getOpportunitiesTotalDesafio2(){
+        Decimal total = 0;
+        //aqui fizemos a query diferente utilizando o NOT IN
+        for(Opportunity vTemp : [SELECT Amount FROM Opportunity WHERE StageName NOT IN ('Closed Won', 'Closed Lost')]){
+            total += vTemp.Amount;
         }
-        if(listaCreateAccount.size() > 0){
-        insert listaCreateAccount;
+        return total;
+    }
+
+    //2 - Criar 10 contas com o nome 'Conta 1', 'Conta 2', e assim por diante. Não retornar nada
+    public static void inserAccountsModoErradoFazer(){
+        //isto esta errado pois estamos acessando o banco de dados várias vezes, e isso pode dar erro de limite DML
+        for(Integer itemp = 1; itemp <= 10; itemp++){
+            system.debug('itemp '+itemp);
+            Account accountObj = new Account();
+            accountObj.Name = 'Conta '+itemp;
+            insert accountObj;
+        }        
+    }
+
+    public static void inserAccountsModoCert(){
+        List<Account> accountList = new List<Account>();
+        for(Integer itemp = 1; itemp <= 10; itemp++){
+            system.debug('itemp '+itemp);
+            Account accountObj = new Account();
+            accountObj.Name = 'Conta TESTE DOIS '+itemp;
+            accountList.add(accountObj);
+        }
+        insert accountList;
+    }
+
+    //DESAFIO - Receber um número inteiro no parâmetro, e vão criar as contas conforme este número com o nome 'Conta DESAFIO 1', 'Conta DESAFIO 2';
+    public static void insertAccountsDesafio(Integer quantidadeContas){
+        List<Account> accountList = new List<Account>();
+
+        for(Integer itemp = 1; itemp <= quantidadeContas; itemp++){
+            Account accountObj = new Account();
+            accountObj.Name = 'Conta DESAFIO '+itemp;
+            accountList.add(accountObj);
+        }
+        if(accountList.size() > 0){
+            insert accountList;
         }
     }
-    
 
     //MAPS
     public static void demonstraMap(){
@@ -308,6 +347,27 @@ public with sharing class ClasseDemonstraEstrutura {
             system.debug('Não contem o id');
         }
     }
+
+    public static void demonstraMap2(){
+        Map<String, Account> contasComCpf = new Map<String, Account>();
+        for(Account vTemp : [SELECT Id, Name, CPF_CNPJ__c FROM Account WHERE CPF_CNPJ__c != '']){
+            system.debug('vtemp '+vtemp);
+            contasComCpf.put(vTemp.CPF_CNPJ__c, vtemp);
+        }
+        system.debug('contasComCpf '+contasComCpf);
+
+        /*
+            contasComCpf {
+                28987241068=Account:{Id=0018c00002ExDT5AAN, Name=Conta DESAFIO 3, CPF_CNPJ__c=28987241068}, 
+                56875327066=Account:{Id=0018c00002ExCnFAAV, Name=Conta 6, CPF_CNPJ__c=56875327066}, 
+                71533936099=Account:{Id=0018c00002ExCufAAF, Name=Conta TESTE DOIS 7, CPF_CNPJ__c=71533936099}}
+        */
+        if(contasComCpf.containsKey('56875327066')){
+            system.debug('contem o cpf');
+        }else{
+            system.debug('não contém o cpf');
+        }
+    }    
 
     //DESAFIO - Receber um número inteiro no parâmetro, e vão criar as contas conforme este número com o nome 'Conta DESAFIO 1', 'Conta DESAFIO 2'; Caso a conta com o nome exista, não deve ser criado, pois não queremos mais de uma conta com o mesmo nome
     public static void insertAccountsDesafioNomeSemMap(Integer quantidadeContas){
@@ -348,16 +408,7 @@ public with sharing class ClasseDemonstraEstrutura {
         if(accountList.size() > 0){
             insert accountList;
         }
-    }
+    }    
 
-    public static void demonstraMap2(){
-        Map<String, Account> contasComCpf = new Map<String, Account>();
-            
-        for (Account vTemp : [SELECT Id, Name, CPF_CPNJ__c FROM Account WHERE CPF_CPNJ__c != '']) {
-                System.debug('Contas ' + vTemp);
-                contasComCpf.put(vTemp.CPF_CPNJ__c,vTemp);
-            }
-        
-            System.debug('Contas com CPF ' + contasComCpf);
-    }
-}
+
+}//fim da classe

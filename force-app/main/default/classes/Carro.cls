@@ -4,23 +4,24 @@ public with sharing class Carro {
     public String modelo {get; set;}
     public String cor {get; set;}
     public Boolean ligado {get; set;}
-    public Integer velocidade {get; set;}
+    public Integer velocidadeCarro {get; set;}
     public Boolean estadoPorta {get; set;} //false é porta fechada
-    public Boolean gasolina {get; set;}
+    public Boolean temGasolina {get;set;}
 
     //DESAFIO - No Carro criar um metodo chamado Acelerar, passar nesse metodo o numero da velocidade. retornar a mesma velocidade.
     //No motorista vocês devem mandar para o carro o valor da velocidade, porém só pode acelerar se o carro estiver ligado.
-    public Boolean acelerar(Integer velocidade){
-        Boolean continua = true;
-        if (this.ligado == null && this.gasolina == null) {
-            continua = false;
-        } else {
-            continua = this.ligado == true && this.gasolina == true;
-        }
-        return velocidade > 0 && velocidade != null && continua ? true : false;
-    } // No caso do && não tem a necessidade de colocar true nos atributos.
+    public Boolean acelerar(Integer velocidade){        
+        //DESAFIO - Verificar se o carro tem ou não gasolina para poder acelerar
 
-    
+        Boolean continua  = true;
+        if(this.ligado == null || this.temGasolina == null){
+            continua  = false;
+        }else{
+            continua = this.ligado && this.temGasolina;
+        }
+
+        return velocidade > 0 && velocidade != null && continua ? true : false;
+    }
   
     /*public Boolean ligarCarro(Boolean ligarCarro){
         Boolean carroLigado = ligarCarro ? true : false;
@@ -41,6 +42,7 @@ public with sharing class Carro {
         }
         return ligouFarol;
     }
+
     public Boolean ligarSeta(Boolean ligarSeta){
         Boolean ligouSeta = ligarSeta ? true : false;
         if(ligarSeta){
