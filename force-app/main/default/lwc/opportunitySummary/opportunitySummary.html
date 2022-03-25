@@ -1,10 +1,21 @@
 <template>
     <lightning-card title ="Lista de Oportunidades" icon-name= "doctype:audio"> 
 
+        <div style="text-align: center;">
+            <lightning-button class="slds-m-arround_medium"
+            label="Nova Conta"
+            exe></lightning-button>
+        </div>
+        </br>
+
+
         <lightning-dataTable
             class="datatable"
-            data="data"
+            data={data}
             columns={columns}
+            hide-checkbox-column
+            show-row-number-column
+            row-number-offset={rowOffset}
             key-field="Name">
         </lightning-dataTable>
 
