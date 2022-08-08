@@ -40,7 +40,7 @@ export default class OpportunitySummary extends NavigationMixin(LightningElement
         });
     }
 
-    //metodo de quando clica no botão
+    //metdodo de quando clica no botão
     executeNewSale(){
         console.log('clicou no botão');
         this[NavigationMixin.Navigate]({

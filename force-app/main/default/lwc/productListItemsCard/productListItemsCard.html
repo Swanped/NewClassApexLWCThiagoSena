@@ -1,0 +1,25 @@
+<template>
+
+    <div class="slds-p-top_small">
+        <img src={_product.imagem} class="product slds-align_absolute-center" width="150px" heigth="150px">
+        <p class="title slds-align_absolute-center">{_product.nome}</p>
+        <p class="title slds-align_absolute-center">
+            <lightning-formatted-number
+                format-style="currency"
+                currency-code="BRL"
+                value={_product.preco}
+                maximum-fraction-digits="2"    
+            ></lightning-formatted-number>
+        </p>
+
+        <div class="slds-p-top_small slds-align_absolute-center">
+            <lightning-button
+                variant="brand"
+                label="Adicionar ao carrinho"
+                class="slsds-m-left_x-small"
+                onclick={handleProductSelected}
+            ></lightning-button>
+        </div>
+    </div>
+    
+</template>
